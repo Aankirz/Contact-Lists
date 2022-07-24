@@ -1,0 +1,19 @@
+body{
+    margin: 100;
+    background-color: #b20707;
+}
+#page-heading{
+    background-color: #630d35;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+#page-content{
+    
+    padding: 10px;
+}
+li{
+    list-style: none;
+}

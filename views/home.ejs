@@ -4,10 +4,33 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-        <%=title %> //the title written here is "Key" in the js file or server
+        <%=title %> 
+       
     </title>
+    <link rel="stylesheet" href="/assets/CSS/home.css">
 </head>
 <body>
-    //Accessing everything from server using key.
+    <!-- Accessing everything from server using key. -->
+   <h1 id="page-heading">Contact Lists</h1>
+
+   <div id="page-content">
+    <ul>
+        <% for(let i of contact_List){%>
+          <li>
+            <p><%=i.name %></p>
+            <p><%=i.phone %></p>
+
+          </li>    
+        <%}%>
+    </ul>
+   </div>
+
+   <form action="/create-contact" method="post" >
+    <input type="text" placeholder="Enter name" name="name">
+    <input type="number" placeholder="Enter phone no." name="phone">
+    <button type="submit">Add Contact</button>
+   </form>
+   <!-- <script type="text/javascript" src="/index.js"></script> --> 
+   <!-- For static one -->
 </body>
 </html>

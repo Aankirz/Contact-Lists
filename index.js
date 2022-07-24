@@ -1,15 +1,21 @@
 //After doing npm install express We can now use the express module to create our server.
+const { name } = require('ejs');
 const express=require('express');
-const { get } = require('http');
+
 const path=require('path');
+
+
 const port=8000;
 
 const app=express();//firing up the server
 
-app.set('viewengine','ejs');//setting up the view engine
+app.set('view engine','ejs');//setting up the view engine
 app.set('views',path.join(__dirname,'views'));
 
-var contactLists=[
+app.use(express.urlencoded());
+app.use(express.static('assets'));
+
+var contactList=[
     {
         name:'John',
         phone:'1234567890',
@@ -20,19 +26,19 @@ var contactLists=[
     }
 ]
 
-app,get('/',function(req,res){
-    return res.render('index',{
+app.get('/',function(req,res){// Setting up the template engine
+    return res.render('home',{
         //here everything you want to display has to be written in js code
        title:"Contact List",
-       contact_List:contactLists
+       contact_List:contactList
 
     })
 })
-app.get('/home',function(req,res){ //Setting up the template engine
-   return res.render('home',{
-         title:'Home Page',
-   })
 
+app.post('/create-contact',function(req,res){
+    //post is used to write set of functions to do something with the data collected from the user
+    contactList.push(req.body);
+    return res.redirect('/');
 })
 
 app.listen(port,function(err){
